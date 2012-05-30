@@ -32,8 +32,7 @@ def php_add_extension(extension):
 @task
 def php_install():
     system.package_install.run(packages='php5 php5-fpm')
-    system.package_install.run(
-        packages='php5-curl php5-gd php-pear php5-memcache')
+    system.package_install.run(packages='php5-curl php5-gd php-pear')
 
     files.sed(
         '/etc/php5/fpm/pool.d/www.conf',
@@ -80,7 +79,8 @@ def setup():
 
     php_push_nginx_config.run()
     nginx.reload.run()
-
+    run('mkdir --parent /home/blibb_web/media/images' % env.conf)
+    sudo('chown -R www-data.www-data /home/blibb_web/media/images' % env.conf)
 
 @task
 def deploy():
@@ -92,5 +92,6 @@ def deploy():
 
     run('mkdir --parent %(release_path)s/uploads/images' % env.conf)
     sudo('chmod 0777 %(release_path)s/uploads/images' % env.conf)
+    
 
     release.activate.run()

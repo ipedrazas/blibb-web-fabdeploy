@@ -21,16 +21,16 @@ class StagingConf(BaseConf):
 
 
 class ProdConf(BaseConf):
-	server_name = 'blibb.it'
+	server_name = 'blibb.net'
 	sudo_user = 'fabdeploy'
-	address = 'blibb_web@blibb.it'
-	api_url = 'http://api.blibb.it'
+	address = 'blibb_web@blibb.co'
+	api_url = 'http://api.blibb.net'
 
 class DevConf(BaseConf):
-    server_name = 'blibb.es'
+    server_name = 'blibb.it'
     sudo_user = 'fabdeploy'
-    address = 'blibb_web@blibb.es'
-    api_url = 'http://api.blibb.es'
+    address = 'blibb_web@blibb.it'
+    api_url = 'http://api.blibb.it'
 
 class LocalhostConf(BaseConf):
 	server_name = 'devblibb.com'
